@@ -174,7 +174,96 @@ footer {
         transform: translateY(0);
     }
 }
+/* ===== BOQ GALLERY ===== */
+.boq-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
 
+.boq-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.boq-item img {
+    width: 100%;
+    display: block;
+    transition: 0.3s;
+}
+
+.boq-item:hover img {
+    transform: scale(1.05);
+}
+
+/* OVERLAY */
+.boq-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.boq-item:hover .boq-overlay {
+    opacity: 1;
+}
+
+.boq-overlay button,
+.boq-overlay a {
+    padding: 8px 16px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.boq-overlay a {
+    background: #22c55e;
+}
+
+/* ===== MODAL PREVIEW ===== */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    padding-top: 60px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85);
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 80%;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+}
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
     .hero h2 {
