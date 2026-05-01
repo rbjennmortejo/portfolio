@@ -55,6 +55,45 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
+        <section id="boq" class="section">
+    <h3>BOQ Gallery</h3>
+    <p>Sample works showcasing detailed quantity take-offs, BOQ preparation, and cost estimation.</p>
+
+    <div class="boq-gallery">
+        <!-- ITEM 1 -->
+        <div class="boq-item">
+            <img src="boq1.jpg" alt="BOQ Sample 1">
+            <div class="boq-overlay">
+                <button onclick="openPreview('boq1.jpg')">Preview</button>
+                <a href="boq1.xlsx" download>Download</a>
+            </div>
+        </div>
+
+        <!-- ITEM 2 -->
+        <div class="boq-item">
+            <img src="boq2.jpg" alt="BOQ Sample 2">
+            <div class="boq-overlay">
+                <button onclick="openPreview('boq2.jpg')">Preview</button>
+                <a href="boq2.xlsx" download>Download</a>
+            </div>
+        </div>
+
+        <!-- ITEM 3 -->
+        <div class="boq-item">
+            <img src="boq3.jpg" alt="BOQ Sample 3">
+            <div class="boq-overlay">
+                <button onclick="openPreview('boq3.jpg')">Preview</button>
+                <a href="boq3.xlsx" download>Download</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- IMAGE PREVIEW MODAL -->
+<div id="previewModal" class="modal">
+    <span class="close" onclick="closePreview()">&times;</span>
+    <img class="modal-content" id="previewImage">
+</div>
         .card {
             background: white;
             padding: 20px;
