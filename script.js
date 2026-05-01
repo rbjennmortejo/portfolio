@@ -88,6 +88,26 @@ function typeWriter() {
         index++;
         setTimeout(typeWriter, speed);
     }
+    // ===== BOQ PREVIEW MODAL =====
+function openPreview(imageSrc) {
+    const modal = document.getElementById("previewModal");
+    const modalImg = document.getElementById("previewImage");
+
+    modal.style.display = "block";
+    modalImg.src = imageSrc;
+}
+
+function closePreview() {
+    document.getElementById("previewModal").style.display = "none";
+}
+
+// CLOSE MODAL WHEN CLICK OUTSIDE IMAGE
+window.addEventListener("click", function(e) {
+    const modal = document.getElementById("previewModal");
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+});
 }
 
 // Clear text first then start typing
