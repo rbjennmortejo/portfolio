@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name | Portfolio</title>
     <style>
-        <script src="script.js"></script>
         body {
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -55,45 +54,6 @@
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
-        <section id="boq" class="section">
-    <h3>BOQ Gallery</h3>
-    <p>Sample works showcasing detailed quantity take-offs, BOQ preparation, and cost estimation.</p>
-
-    <div class="boq-gallery">
-        <!-- ITEM 1 -->
-        <div class="boq-item">
-            <img src="boq1.jpg" alt="BOQ Sample 1">
-            <div class="boq-overlay">
-                <button onclick="openPreview('boq1.jpg')">Preview</button>
-                <a href="boq1.xlsx" download>Download</a>
-            </div>
-        </div>
-
-        <!-- ITEM 2 -->
-        <div class="boq-item">
-            <img src="boq2.jpg" alt="BOQ Sample 2">
-            <div class="boq-overlay">
-                <button onclick="openPreview('boq2.jpg')">Preview</button>
-                <a href="boq2.xlsx" download>Download</a>
-            </div>
-        </div>
-
-        <!-- ITEM 3 -->
-        <div class="boq-item">
-            <img src="boq3.jpg" alt="BOQ Sample 3">
-            <div class="boq-overlay">
-                <button onclick="openPreview('boq3.jpg')">Preview</button>
-                <a href="boq3.xlsx" download>Download</a>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- IMAGE PREVIEW MODAL -->
-<div id="previewModal" class="modal">
-    <span class="close" onclick="closePreview()">&times;</span>
-    <img class="modal-content" id="previewImage">
-</div>
         .card {
             background: white;
             padding: 20px;
@@ -102,6 +62,93 @@
         }
         .card h4 {
             margin-top: 0;
+        }
+        /* BOQ Gallery styles */
+        .boq-gallery {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .boq-item {
+            position: relative;
+            width: 220px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(31,41,55,0.08);
+            margin-bottom: 20px;
+        }
+        .boq-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .boq-item:hover img {
+            transform: scale(1.05);
+        }
+        .boq-overlay {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(31,41,55,0.86);
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 0;
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+        .boq-item:hover .boq-overlay,
+        .boq-item:focus-within .boq-overlay {
+            opacity: 1;
+        }
+        .boq-overlay button,
+        .boq-overlay a {
+            background: #3b82f6;
+            color: #fff;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+            text-decoration: none;
+        }
+        /* Modal styles */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: auto;
+            background-color: rgba(31,41,55,0.88);
+        }
+        .modal-content {
+            display: block;
+            margin: 60px auto;
+            max-width: 80vw;
+            max-height: 80vh;
+            border-radius: 8px;
+        }
+        .close {
+            color: #fff;
+            position: absolute;
+            top: 24px;
+            right: 48px;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.2s;
+        }
+        .close:hover {
+            color: #3b82f6;
         }
         footer {
             background: #1f2937;
@@ -120,6 +167,19 @@
             border-radius: 5px;
             font-size: 14px;
         }
+        @media (max-width: 700px) {
+            .hero, .section {
+                padding: 30px 10px;
+            }
+            .boq-gallery {
+                flex-direction: column;
+                align-items: center;
+            }
+            .boq-item {
+                width: 90vw;
+                max-width: 350px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -129,48 +189,88 @@
     <nav>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
+        <a href="#boq">BOQ Gallery</a>
         <a href="#contact">Contact</a>
     </nav>
 </header>
 
-<section class="hero">
-    <h2>Quantity Surveyor & Cost Engineer</h2>
-    <p>
-        Portfolio showcasing my expertise in quantity take-offs, BOQ preparation, cost estimation,
-        and customer sales support—delivering accurate and client-focused solutions for civil and structural projects.
-    </p>
-    <a href="#projects" class="btn">View My Work</a>
-</section>
+<main>
+    <section class="hero">
+        <h2>Quantity Surveyor & Cost Engineer</h2>
+        <p>
+            Portfolio showcasing my expertise in quantity take-offs, BOQ preparation, cost estimation,
+            and customer sales support—delivering accurate and client-focused solutions for civil and structural projects.
+        </p>
+        <a href="#projects" class="btn">View My Work</a>
+    </section>
 
-<section id="about" class="section">
-    <h3>About Me</h3>
-    <p>
-        I specialize in quantity surveying, cost estimation, and construction documentation.
-        I deliver precise BOQs and reliable estimates to support project planning, bidding, and execution.
-    </p>
-</section>
+    <section id="about" class="section">
+        <h3>About Me</h3>
+        <p>
+            I specialize in quantity surveying, cost estimation, and construction documentation.
+            I deliver precise BOQs and reliable estimates to support project planning, bidding, and execution.
+        </p>
+    </section>
 
-<section id="projects" class="section">
-    <h3>Featured Work</h3>
-    <div class="projects">
-        <div class="card">
-            <h4>Bridge BOQ</h4>
-            <p>Detailed BOQ including quantities, unit costs, and total cost for structural works.</p>
+    <section id="projects" class="section">
+        <h3>Featured Work</h3>
+        <div class="projects">
+            <div class="card">
+                <h4>Bridge BOQ</h4>
+                <p>Detailed BOQ including quantities, unit costs, and total cost for structural works.</p>
+            </div>
+            <div class="card">
+                <h4>Quantity Take-Off</h4>
+                <p>Accurate material take-offs using Excel and Bluebeam for project estimation.</p>
+            </div>
+            <div class="card">
+                <h4>Cost Estimate</h4>
+                <p>Comprehensive cost breakdown for pre-bid and tender submissions.</p>
+            </div>
         </div>
-        <div class="card">
-            <h4>Quantity Take-Off</h4>
-            <p>Accurate material take-offs using Excel and Bluebeam for project estimation.</p>
+    </section>
+
+    <section id="boq" class="section">
+        <h3>BOQ Gallery</h3>
+        <p>Sample works showcasing detailed quantity take-offs, BOQ preparation, and cost estimation.</p>
+        <div class="boq-gallery">
+            <!-- ITEM 1 -->
+            <div class="boq-item" tabindex="0">
+                <img src="boq1.jpg" alt="BOQ Sample 1" onclick="openPreview('boq1.jpg')">
+                <div class="boq-overlay">
+                    <button onclick="openPreview('boq1.jpg')">Preview</button>
+                    <a href="boq1.xlsx" download>Download</a>
+                </div>
+            </div>
+            <!-- ITEM 2 -->
+            <div class="boq-item" tabindex="0">
+                <img src="boq2.jpg" alt="BOQ Sample 2" onclick="openPreview('boq2.jpg')">
+                <div class="boq-overlay">
+                    <button onclick="openPreview('boq2.jpg')">Preview</button>
+                    <a href="boq2.xlsx" download>Download</a>
+                </div>
+            </div>
+            <!-- ITEM 3 -->
+            <div class="boq-item" tabindex="0">
+                <img src="boq3.jpg" alt="BOQ Sample 3" onclick="openPreview('boq3.jpg')">
+                <div class="boq-overlay">
+                    <button onclick="openPreview('boq3.jpg')">Preview</button>
+                    <a href="boq3.xlsx" download>Download</a>
+                </div>
+            </div>
         </div>
-        <div class="card">
-            <h4>Cost Estimate</h4>
-            <p>Comprehensive cost breakdown for pre-bid and tender submissions.</p>
-        </div>
-    </div>
-</section>
+    </section>
+</main>
+
+<!-- IMAGE PREVIEW MODAL -->
+<div id="previewModal" class="modal" tabindex="-1" aria-modal="true" role="dialog">
+    <span class="close" onclick="closePreview()" role="button" aria-label="Close preview">&times;</span>
+    <img class="modal-content" id="previewImage" alt="BOQ Preview">
+</div>
 
 <section id="contact" class="section">
     <h3>Contact</h3>
-    <p>Email: your@email.com</p>
+    <p>Email: <a href="mailto:your@email.com">your@email.com</a></p>
     <p>Phone: +63 XXX XXX XXXX</p>
 </section>
 
@@ -178,5 +278,30 @@
     <p>© 2026 Your Name. All rights reserved.</p>
 </footer>
 
+<script>
+function openPreview(imgSrc) {
+    var modal = document.getElementById('previewModal');
+    var img = document.getElementById('previewImage');
+    img.src = imgSrc;
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scroll
+}
+function closePreview() {
+    var modal = document.getElementById('previewModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = '';
+}
+// Accessibility: close modal on escape key
+document.addEventListener('keydown', function(event) {
+    var modal = document.getElementById('previewModal');
+    if (event.key === "Escape" && modal.style.display === 'block') {
+        closePreview();
+    }
+});
+// Close modal when clicking outside the image
+document.getElementById('previewModal').addEventListener('click', function(event) {
+    if(event.target === this) closePreview();
+});
+</script>
 </body>
 </html>
