@@ -1,0 +1,195 @@
+/* ===== GOOGLE FONT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
+
+/* ===== ROOT VARIABLES ===== */
+:root {
+    --primary: #2563eb;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --gray: #64748b;
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --glass: blur(12px);
+}
+
+/* ===== GLOBAL ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(120deg, #f1f5f9, #e2e8f0);
+    color: var(--dark);
+    line-height: 1.6;
+}
+
+/* ===== HEADER ===== */
+header {
+    position: sticky;
+    top: 0;
+    backdrop-filter: var(--glass);
+    background: rgba(255,255,255,0.6);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    z-index: 1000;
+}
+
+header h1 {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+nav a {
+    margin-left: 25px;
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 500;
+    position: relative;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: var(--primary);
+    bottom: -4px;
+    left: 0;
+    transition: 0.3s;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* ===== HERO ===== */
+.hero {
+    padding: 120px 60px;
+    text-align: left;
+    max-width: 1000px;
+}
+
+.hero h2 {
+    font-size: 48px;
+    font-weight: 800;
+    background: linear-gradient(to right, #1e3a8a, #2563eb);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    margin-top: 20px;
+    font-size: 18px;
+    color: var(--gray);
+}
+
+.btn {
+    margin-top: 30px;
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+/* ===== SECTIONS ===== */
+.section {
+    padding: 80px 60px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section h3 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+/* ===== PROJECT CARDS ===== */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: var(--card-bg);
+    backdrop-filter: var(--glass);
+    padding: 25px;
+    border-radius: 16px;
+    transition: 0.3s;
+    border: 1px solid rgba(255,255,255,0.4);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+}
+
+.card h4 {
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.card p {
+    color: var(--gray);
+    font-size: 14px;
+}
+
+/* ===== CONTACT ===== */
+#contact p {
+    margin-bottom: 8px;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #0f172a;
+    color: white;
+    font-size: 14px;
+}
+
+/* ===== ANIMATIONS ===== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 32px;
+    }
+
+    .hero {
+        padding: 80px 30px;
+    }
+
+    .section {
+        padding: 60px 30px;
+    }
+
+    header {
+        padding: 15px 25px;
+    }
+}
